@@ -1,5 +1,5 @@
 import os, zipfile, textwrap, json
-root = "/mnt/data/kepler-cannon-variants"
+root = "kepler-cannon-variants"
 os.makedirs(root, exist_ok=True)
 
 solo_dir = os.path.join(root, "solo-quick-play")

@@ -141,10 +141,10 @@ with tabs[3]:
                 col1,col2 = st.columns(2)
                 if col1.button("Start Random Round") and not up.empty:
                     create_round(up.sample(1).iloc[0]); mark_played(int(up.sample(1).iloc[0]['id']))
-                    st.experimental_rerun()
+                    st.rerun()
                 pick = col2.selectbox("Start selected:", ["--"] + up['name'].tolist())
                 if col2.button("Start Selected") and pick!="--":
-                    row = up[up['name']==pick].iloc[0]; create_round(row); mark_played(int(row['id'])); st.experimental_rerun()
+                    row = up[up['name']==pick].iloc[0]; create_round(row); mark_played(int(row['id'])); st.rerun()
         else:
             st.warning(f"Round in progress for player_id={int(r['player_id'])}")
             st.write("1) ", r['stmt1']); st.write("2) ", r['stmt2'])
@@ -154,7 +154,7 @@ with tabs[3]:
             if st.button("Close Round"):
                 with closing(conn.cursor()) as cur:
                     cur.execute("UPDATE rounds SET status='closed' WHERE id=?", (int(r['id']),)); conn.commit()
-                st.experimental_rerun()
+                st.rerun()
         st.divider()
         if st.button("Reset played flags (keep scores)"):
             with closing(conn.cursor()) as cur:

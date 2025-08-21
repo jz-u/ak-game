@@ -171,3 +171,6 @@ with tabs[3]:
 with open(os.path.join(solo_dir, "app.py"), "w", encoding="utf-8") as f:
     f.write(textwrap.dedent(solo_app))
 
+import runpy, sys
+sys.path.insert(0, solo_dir)
+runpy.run_path(os.path.join(solo_dir, "app.py"), run_name="__main__")

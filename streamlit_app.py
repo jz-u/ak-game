@@ -171,5 +171,3 @@ with tabs[3]:
 with open(os.path.join(solo_dir, "app.py"), "w", encoding="utf-8") as f:
     f.write(textwrap.dedent(solo_app))
 
-with open(os.path.join(solo_dir, "requirements.txt"), "w", encoding="utf-8") as f:
-    f.write(requirements)

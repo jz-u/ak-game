@@ -10,6 +10,7 @@ import os, random, sqlite3
 from contextlib import closing
 import pandas as pd
 import streamlit as st
+from streamlit_autorefresh import st_autorefresh
 
 st.set_page_config(page_title="Truth or Lie — Solo Quick-Play", page_icon="🎭", layout="wide")
 
@@ -119,7 +120,7 @@ with tabs[1]:
                 st.success("Vote recorded. You can change it until reveal.")
         total,c1,c2 = count_votes(int(r['id']))
         st.caption(f"Live votes — total: {total} | Option1: {c1} | Option2: {c2}")
-        st.autorefresh(3000, key="vote_refresh_solo")
+        st_autorefresh(interval=3000, key="vote_refresh_solo")
 
 with tabs[2]:
     st.subheader("Leaderboard")
